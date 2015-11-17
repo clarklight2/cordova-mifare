@@ -1,4 +1,4 @@
-package com.clark.nfcaes.plugin;
+package se.frostyelk.cordova.mifare;
 
 import com.nxp.nfclib.classic.IMFClassic;
 import com.nxp.nfclib.exceptions.PlusException;
