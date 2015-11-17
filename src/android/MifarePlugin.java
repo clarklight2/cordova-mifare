@@ -21,8 +21,7 @@ import com.nxp.nfcliblite.cards.Plus;
 
 
 
-import com.nxp.nfcliblite.cards.IDESFireEV1;
-import com.nxp.nfclib.classic.IMFClassic;
+
 import com.nxp.nfclib.exceptions.PlusException;
 import com.nxp.nfclib.exceptions.ReaderException;
 import com.nxp.nfclib.exceptions.SAMException;
