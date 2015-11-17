@@ -1,42 +1,32 @@
-/**
-Copyright 2015 Frosty Elk AB
+var nfc = {
 
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
+    addTagDiscoveredListener: function (callback, win, fail) {
+        document.addEventListener("tag", callback, false);
+        cordova.exec(win, fail, "MifarePlugin", "registerTag", []);
+    },
 
-    http://www.apache.org/licenses/LICENSE-2.0
+    addMimeTypeListener: function (mimeType, callback, win, fail) {
+        document.addEventListener("ndef-mime", callback, false);
+        cordova.exec(win, fail, "MifarePlugin", "registerMimeType", [mimeType]);
+    },
 
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
- */
-/* jshint -W117 */
-var exec = require('cordova/exec');
+    addNdefListener: function (callback, win, fail) {
+        document.addEventListener("ndef", callback, false);
+        cordova.exec(win, fail, "MifarePlugin", "registerNdef", []);
+    },
 
-var mifareExport = {};
+    addNdefFormatableListener: function (callback, win, fail) {
+        document.addEventListener("ndef-formatable", callback, false);
+        cordova.exec(win, fail, "MifarePlugin", "registerNdefFormatable", []);
+    },
 
-/**
-* options = {
-*   "password": password for NFC tag read operations
-* }
-*/
-mifareExport.init = function (options, successCallback, failureCallback) {
-	cordova.exec(successCallback, failureCallback, 'MifarePlugin', 'init',[options]);
+    write: function (ndefMessage, win, fail) {
+        cordova.exec(win, fail, "MifarePlugin", "writeTag", [ndefMessage]);
+    },
+
+    makeReadOnly: function (win, fail) {
+        cordova.exec(win, fail, "MifarePlugin", "makeReadOnly", []);
+    },
+
+
 };
-
-/**
-* Write Tag data.
-* data = {
-* 	"payload": byte[]
-* }
-*
-*/
-mifareExport.writeTag = function (data, successCallback, failureCallback) {
-	cordova.exec(successCallback, failureCallback, 'MifarePlugin', 'writeTag',[data]);
-};
-
-
-module.exports = mifareExport;
