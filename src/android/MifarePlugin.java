@@ -51,43 +51,7 @@ public class MifarePlugin extends CordovaPlugin {
 	/** Create lib lite instance. */
 	private NxpNfcLibLite libInstance = null;
 	/** Mifare DESFire instance initiated. */
-	private IDESFireEV1 mDESFire;
 
-	/** Mifare MFClassic instance initiated. */
-	private IMFClassic classic;
-	/** Mifare Ultralight instance initiated. */
-	private IUltralight mifareUL;
-	/** Mifare Ultralight instance initiated. */
-	private IUltralightC objUlCardC;
-	/** Mifare Ultralight EV1 instance initiated. */
-	private IUltralightEV1 objUlCardEV1;
-	/** Mifare Plus instance initiated. */
-	private IPlus plus;
-
-	/** Mifare Plus SL1 instance initiated. */
-	private IPlusSL1 plusSL1;
-
-	/** ICode SLI instance initiated. */
-	private IICodeSLI iCodeSli;
-	/** ICode SLI-L instance initiated. */
-	private IICodeSLIL iCodeSliL;
-	/** ICode SLI-S instance initiated. */
-	private IICodeSLIS iCodeSliS;
-	/** ICode SLI-X instance initiated. */
-	private IICodeSLIX iCodeSliX;
-	/** ICode SLI-XL instance initiated. */
-	private IICodeSLIXL iCodeSliXL;
-	/** ICode SLI-XS instance initiated. */
-	private IICodeSLIXS iCodeSliXS;
-	/** ICode SLIX2 instance initiated. */
-	private IICodeSLIX2 iCodeSliX2;
-
-	/** Create imageView instance. */
-	private ImageView mImageView = null;
-	// private static Handler mHandler;
-	/** Create Textview instance initiated. */
-	private TextView tv = null;
-	/**
 	 * Ultralight First User Memory Page Number.
 	 */
 	private static final int DEFAULT_PAGENO_ULTRALIGHT = 4;
@@ -105,7 +69,6 @@ public class MifarePlugin extends CordovaPlugin {
 	/** */
 	private Cipher cipher = null;
 	/** */
-	private IvParameterSpec iv = null;
 
     
         public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
