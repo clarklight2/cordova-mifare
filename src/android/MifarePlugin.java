@@ -18,6 +18,8 @@ import com.nxp.nfcliblite.Interface.NxpNfcLibLite;
 import com.nxp.nfcliblite.Interface.Nxpnfcliblitecallback;
 import com.nxp.nfcliblite.cards.DESFire;
 import com.nxp.nfcliblite.cards.Plus;
+
+
 import com.nxp.nfclib.utils.NxpLogUtils;
 import com.nxp.nfclib.utils.Utilities;
 import com.nxp.nfcliblite.Interface.NxpNfcLibLite;
@@ -28,14 +30,8 @@ import com.nxp.nfclib.exceptions.PlusException;
 import com.nxp.nfclib.exceptions.ReaderException;
 import com.nxp.nfclib.exceptions.SAMException;
 import com.nxp.nfclib.exceptions.SmartCardException;
-import com.nxp.nfclib.icode.ICodeSLI;
-import com.nxp.nfclib.icode.IICodeSLI;
-import com.nxp.nfclib.icode.IICodeSLIL;
-import com.nxp.nfclib.icode.IICodeSLIS;
-import com.nxp.nfclib.icode.IICodeSLIX;
-import com.nxp.nfclib.icode.IICodeSLIX2;
-import com.nxp.nfclib.icode.IICodeSLIXL;
-import com.nxp.nfclib.icode.IICodeSLIXS;
+
+
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
