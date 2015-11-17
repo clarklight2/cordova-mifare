@@ -32,8 +32,7 @@ import java.io.IOException;
  * This class represents the native implementation for the MIFARE Cordova plugin.
  */
 public class MifarePlugin extends CordovaPlugin {
-    	private NxpNfcLibLite libInstance = null;
-    	private IDESFireEV1 mDESFire;
+    
      private static final String LOGTAG = "MifarePlugin";
     private static final String ACTION_INIT = "init";
      private static final String ACTION_AUTHENTICATE = "Authenticate";
