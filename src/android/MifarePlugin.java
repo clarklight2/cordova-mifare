@@ -18,16 +18,6 @@ import com.nxp.nfcliblite.Interface.NxpNfcLibLite;
 import com.nxp.nfcliblite.Interface.Nxpnfcliblitecallback;
 import com.nxp.nfcliblite.cards.DESFire;
 import com.nxp.nfcliblite.cards.Plus;
-
-
-
-
-import com.nxp.nfclib.exceptions.PlusException;
-import com.nxp.nfclib.exceptions.ReaderException;
-import com.nxp.nfclib.exceptions.SAMException;
-import com.nxp.nfclib.exceptions.SmartCardException;
-
-
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
