@@ -1,18 +1,3 @@
-/**
- * Copyright (C) 2015 Frosty Elk AB
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 package se.frostyelk.cordova.mifare;
 
@@ -33,6 +18,24 @@ import com.nxp.nfcliblite.Interface.NxpNfcLibLite;
 import com.nxp.nfcliblite.Interface.Nxpnfcliblitecallback;
 import com.nxp.nfcliblite.cards.DESFire;
 import com.nxp.nfcliblite.cards.Plus;
+import com.nxp.nfclib.utils.NxpLogUtils;
+import com.nxp.nfclib.utils.Utilities;
+import com.nxp.nfcliblite.Interface.NxpNfcLibLite;
+import com.nxp.nfcliblite.Interface.Nxpnfcliblitecallback;
+import com.nxp.nfcliblite.cards.IDESFireEV1;
+import com.nxp.nfclib.classic.IMFClassic;
+import com.nxp.nfclib.exceptions.PlusException;
+import com.nxp.nfclib.exceptions.ReaderException;
+import com.nxp.nfclib.exceptions.SAMException;
+import com.nxp.nfclib.exceptions.SmartCardException;
+import com.nxp.nfclib.icode.ICodeSLI;
+import com.nxp.nfclib.icode.IICodeSLI;
+import com.nxp.nfclib.icode.IICodeSLIL;
+import com.nxp.nfclib.icode.IICodeSLIS;
+import com.nxp.nfclib.icode.IICodeSLIX;
+import com.nxp.nfclib.icode.IICodeSLIX2;
+import com.nxp.nfclib.icode.IICodeSLIXL;
+import com.nxp.nfclib.icode.IICodeSLIXS;
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 import org.apache.cordova.PluginResult;
