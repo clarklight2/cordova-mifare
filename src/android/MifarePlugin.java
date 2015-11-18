@@ -68,7 +68,7 @@ public class MifarePlugin extends CordovaPlugin {
 private IDESFireEV1 mDESFire;
     private String password;
     private byte[] payload;
-    private NTag nTag;
+ 
     private Tag tagInfo;
     private Intent initializeIntent;
 
