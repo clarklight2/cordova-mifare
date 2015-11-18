@@ -45,7 +45,7 @@ public class MifarePlugin extends CordovaPlugin {
     private static final int UNIVERSAL_NUMBER = 42;
     private static final int MAX_FAST_READ_PAGES = 50;
     private static String TAG = "MifarePLugin";
-
+private IDESFireEV1 mDESFire;
     private String password;
     private byte[] payload;
     private NTag nTag;
