@@ -443,13 +443,14 @@ public class MifarePlugin extends CordovaPlugin {
 		NxpLogUtils.d(TAG, "testDESFireFormat, End");
 	}
     
-    	protected void desfireCardLogic() throws SmartCardException {
+    	protected void desfireCardLogic(final JSONObject options, final CallbackContext callbackContext) throws SmartCardException {
 
 		//showImageSnap(R.drawable.desfire_ev1);
 		//tv.setText(" ");
 		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,'n');
 
 		try {
+			  e.printStackTrace();
 			mDESFire.getReader().setTimeout(2000);
 			testDESFirepersonalize();
 			testDESFireauthenticate();
