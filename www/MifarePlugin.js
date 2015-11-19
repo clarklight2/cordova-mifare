@@ -38,11 +38,10 @@ mifareExport.onDESFireCardDetected = function (data, successCallback, failureCal
       console.log("test2");
 };
 
-module.exports = {
-    greet: function (name, successCallback, errorCallback) {
+mifareExport.greet =  function (name, successCallback, errorCallback) {
         cordova.exec(successCallback, errorCallback, "MifarePlugin", "greet", [name]);
         console.log("test");
-    }
+    
 };
 
 module.exports = mifareExport;
