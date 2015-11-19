@@ -155,31 +155,133 @@ public class MifarePlugin extends CordovaPlugin {
        public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
             
             
-  	showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,
-				'n');
-        
-            
-            
-            
-              if (ACTION_INIT.equals(action)) {
-            result = init(args.getJSONObject(0), callbackContext);
-        } else if (ACTION_WRITE_TAG_DATA.equals(action)) {
-            result = writeTag(args.getJSONObject(0), callbackContext);
-        } else if (ACTION_AUTHENTICATE.equals(action)) {
-
-     result = authenticate(args.getJSONObject(0), callbackContext);
-            
- }else if (ACTION_ENCRYPT.equals(action)) {
-
-     result = encrypt(args.getJSONObject(0), callbackContext);
-            
-              
-              }
-          return true;
+ 
             
     }
     
-    
+    	private void showCardDetails(Object cardDetailsObj) {/*
+														 * // showMessage(dump(
+														 * cardDetailsObj) ,
+														 * 'd'); StringBuilder
+														 * strBuilder = new
+														 * StringBuilder();
+														 * strBuilder
+														 * .append("Card Details"
+														 * );
+														 * strBuilder.append("\n"
+														 * ); Field[] flds =
+														 * cardDetailsObj
+														 * .getClass
+														 * ().getDeclaredFields
+														 * (); for (Field fd :
+														 * flds) { try {
+														 * fd.setAccessible
+														 * (true); Object value
+														 * =
+														 * fd.get(cardDetailsObj
+														 * ); if (value != null)
+														 * { if
+														 * (value.getClass()
+														 * .isPrimitive() ||
+														 * value.getClass() ==
+														 * java.lang.Long.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.String.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.Integer.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.Boolean.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.Double.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.Short.class
+														 * || value.getClass()
+														 * ==
+														 * java.lang.Byte.class)
+														 * {
+														 * strBuilder.append(fd
+														 * .getName() + "-->" +
+														 * value); } else { if
+														 * (fd
+														 * .getName().toString
+														 * ().equals("this$0"))
+														 * { continue; }
+														 * strBuilder
+														 * .append(fd.getName()
+														 * + "-->");
+														 * strBuilder.append
+														 * ("["); for (int i =
+														 * 0; i <
+														 * Array.getLength
+														 * (value); i++) {
+														 * Object value2 =
+														 * Array.get(value, i);
+														 * if
+														 * (value2.getClass().
+														 * isPrimitive() ||
+														 * value2.getClass() ==
+														 * java.lang.Long.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.Integer.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.Boolean.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.String.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.Double.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.Short.class
+														 * || value2.getClass()
+														 * ==
+														 * java.lang.Byte.class)
+														 * {
+														 * 
+														 * 
+														 * if(value2.toString().
+														 * length() == 1) {
+														 * strBuilder
+														 * .append("0x0" +
+														 * Integer
+														 * .toHexString(Integer
+														 * .parseInt
+														 * (value2.toString
+														 * ()))); } else {
+														 * strBuilder
+														 * .append("0x" +
+														 * Integer
+														 * .toHexString(Integer
+														 * .parseInt
+														 * (value2.toString
+														 * ()))); } if (i !=
+														 * (Array
+														 * .getLength(value) -
+														 * 1))
+														 * strBuilder.append(
+														 * ","); } }
+														 * strBuilder.append
+														 * ("]"); } } } catch
+														 * (IllegalAccessException
+														 * e) {
+														 * strBuilder.append
+														 * (e.getMessage()); }
+														 * strBuilder
+														 * .append("\n"); }
+														 * 
+														 * showMessage(strBuilder
+														 * .toString(), 'd');
+														 */
+	}
+
     
     	public void onDESFireCardDetected(final IDESFireEV1 objDESFire) {
 				mDESFire = objDESFire;
@@ -324,7 +426,23 @@ public class MifarePlugin extends CordovaPlugin {
 		NxpLogUtils.d(TAG, "testDESFireRead, End");
 	}
 
+	private void testDESFireFormat() {
+		byte[] mykey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireFormat, start");
+			mDESFire.format(mykey);
+			res = true;
+			showMessage("Format: " + res, 'd');
+		} catch (SmartCardException e) {
+			showMessage("Format: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireFormat, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFireFormat, End");
+	}
     
     	protected void desfireCardLogic() throws SmartCardException {
 
@@ -358,4 +476,3 @@ public class MifarePlugin extends CordovaPlugin {
 
 
 }
-
