@@ -35,9 +35,28 @@ var mifareExport = {};
 
 mifareExport.onDESFireCardDetected = function (data, successCallback, failureCallback) {
 	cordova.exec(successCallback, failureCallback, 'MifarePlugin', 'onDESFireCardDetected',[name]);
-	
-	console.log("test");
+      console.log("test2");
 };
 
+module.exports = {
+    greet: function (name, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "Hello", "greet", [name]);
+        console.log("test");
+    }
+};
 
 module.exports = mifareExport;
+
+
+ document.addEventListener("deviceready", function(){
+       var success = function(message) {
+        alert(message);
+    }
+
+    var failure = function() {
+        alert("Error calling Hello Plugin");
+    }
+
+    MifarePlugin.greet("World", success, failure);
+     
+ })
