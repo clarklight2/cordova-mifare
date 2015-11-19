@@ -65,14 +65,14 @@ public class MifarePlugin extends CordovaPlugin {
     private static final int UNIVERSAL_NUMBER = 42;
     private static final int MAX_FAST_READ_PAGES = 50;
     private static String TAG = "MifarePLugin";
-private IDESFireEV1 mDESFire;
+
     private String password;
     private byte[] payload;
  
     private Tag tagInfo;
     private Intent initializeIntent;
     
-    static final String TAG = "SampleNxpNfcLibLite";
+ 
 	/** Create lib lite instance. */
 	private NxpNfcLibLite libInstance = null;
 	/** Mifare DESFire instance initiated. */
