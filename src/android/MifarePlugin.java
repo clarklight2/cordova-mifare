@@ -294,7 +294,7 @@ public class MifarePlugin extends CordovaPlugin {
 	}
 
     
-    	public PluginResult onDESFireCardDetected (final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext) {
+    	public PluginResult onDESFireCardDetected (final IDESFireEV1 objDESFire) {
 				mDESFire = objDESFire;
          
 				/* Insert your logic here by commenting the function call below. */
