@@ -48,15 +48,4 @@ module.exports = {
 module.exports = mifareExport;
 
 
- document.addEventListener("deviceready", function(){
-       var success = function(message) {
-        alert(message);
-    }
 
-    var failure = function() {
-        alert("Error calling Hello Plugin");
-    }
-
-    MifarePlugin.greet("World", success, failure);
-     
- })
