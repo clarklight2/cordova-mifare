@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0" id="com.clark.aestest" version="0.3.8">
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0" id="com.clark.aestest" version="0.3.9">
     <name>Cordova MIFARE plugin</name>
     <description>Cordova plugin for NFC tags based on MIFARE/NTAG2</description>
     <author>Arne Sikstrom</author>
