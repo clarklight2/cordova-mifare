@@ -30,3 +30,12 @@ var nfc = {
 
 
 };
+
+var mifareExport = {};
+
+mifareExport.onDESFireCardDetected = function (data, successCallback, failureCallback) {
+	cordova.exec(successCallback, failureCallback, 'MifarePlugin', 'onDESFireCardDetected',[name]);
+};
+
+
+module.exports = mifareExport;
