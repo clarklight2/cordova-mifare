@@ -293,7 +293,7 @@ public class MifarePlugin extends CordovaPlugin {
                  callbackContext.success(message);    
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
-					desfireCardLogic();
+					desfireCardLogic(final JSONObject options, final CallbackContext callbackContext);
                    
 				} catch (Throwable t) {
 					t.printStackTrace();
