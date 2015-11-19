@@ -1,5 +1,23 @@
 package se.frostyelk.cordova.mifare;
 
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.security.GeneralSecurityException;
+import java.security.InvalidAlgorithmParameterException;
+import java.security.InvalidKeyException;
+import java.security.NoSuchAlgorithmException;
+import java.util.Arrays;
+import java.util.Locale;
+
+import javax.crypto.BadPaddingException;
+import javax.crypto.Cipher;
+import javax.crypto.IllegalBlockSizeException;
+import javax.crypto.NoSuchPaddingException;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.http.ProtocolException;
+import org.apache.http.auth.AuthenticationException;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
@@ -177,9 +195,136 @@ public class MifarePlugin extends CordovaPlugin {
 
 			}
     
+    	private void testDESFireauthenticate() {
+		byte[] masterKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+		byte[] appId = { 0x12, 0x12, 0x12 };
+		byte[] appkey = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireauthenticate, start");
+			mDESFire.authenticate(masterKey, appId, appkey);
+			res = true;
+			showMessage("Authenticate: " + res, 'd');
+		} catch (SmartCardException e) {
+			showMessage("Authenticate: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireauthenticate, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFireauthenticate, End");
+	}
+
+    	private void testDESFirepersonalize() {
+		byte[] mykey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+		byte[] appKey = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFirepersonalize, start");
+
+			mDESFire.personalize(mykey, new byte[] { 0x12, 0x12, 0x12 }, appKey);
+			res = true;
+			showMessage("personalize: " + res, 'd');
+		} catch (SmartCardException e) {
+			showMessage("personalize: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFirepersonalize, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFirepersonalize, End");
+
+	}
     
     
+    	private void testDESFireupdatePICCMasterKey() {
+		byte[] oldKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+		byte[] newKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireupdatePICCMasterKey, start");
+			mDESFire.updatePICCMasterKey(oldKey, newKey);
+			res = true;
+			showMessage("DESFire Update PICC Master Key: " + res, 'd');
+		} catch (SmartCardException e) {
+			showMessage("DESFire Update PICC Master Key: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireupdatePICCMasterKey, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFireupdatePICCMasterKey, End");
+
+	}
     
+    	private void testDESFireupdateApplicationMasterKey() {
+		byte[] oldKey = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+		byte[] newKey = new byte[] { 0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+		byte[] masterKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
+				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
+
+		byte[] appId = { 0x12, 0x12, 0x12 };
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireupdateApplicationMasterKey, start");
+			mDESFire.updateApplicationMasterKey(masterKey, appId, oldKey,
+					newKey);
+			res = true;
+			showMessage("Update Application MasterKey: " + res, 'd');
+		} catch (SmartCardException e) {
+			showMessage("Update Application MasterKey: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireupdateApplicationMasterKey, result is "
+				+ res);
+		NxpLogUtils.d(TAG, "testDESFireupdateApplicationMasterKey, End");
+	}
+
+    
+    	private void testDESFireWrite() {
+
+		byte[] data = new byte[] { 0x11, 0x11, 0x11, 0x11, 0x11, 0x11, 0x11,
+				0x11 };
+
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireWrite, start");
+			mDESFire.write(data);
+			res = true;
+			showMessage("Data Written: " + Utilities.dumpBytes(data), 'd');
+		} catch (SmartCardException e) {
+			showMessage("Data Written: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireWrite, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFireWrite, End");
+
+	}
+    
+    	private void testDESFireRead() {
+
+		boolean res = false;
+		try {
+			NxpLogUtils.d(TAG, "testDESFireRead, start");
+			byte[] data = mDESFire.read(5);
+			res = true;
+			showMessage(
+					"Data Read from the card..." + Utilities.dumpBytes(data),
+					'd');
+		} catch (SmartCardException e) {
+			showMessage("Data Read from the card: " + res, 'd');
+			e.printStackTrace();
+		}
+		NxpLogUtils.d(TAG, "testDESFireRead, result is " + res);
+		NxpLogUtils.d(TAG, "testDESFireRead, End");
+	}
+
+
     
     	protected void desfireCardLogic() throws SmartCardException {
 
@@ -213,3 +358,4 @@ public class MifarePlugin extends CordovaPlugin {
 
 
 }
+
