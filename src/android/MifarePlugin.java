@@ -294,25 +294,23 @@ public class MifarePlugin extends CordovaPlugin {
 	}
 
     
-    	public PluginResult onDESFireCardDetected(final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext) {
+    	public PluginResult onDESFireCardDetected (final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext) {
 				mDESFire = objDESFire;
-             boolean result=true;
+         
 				/* Insert your logic here by commenting the function call below. */
 				try {
-                   
-                    String name = "Name";
-                    String message = "Hello" + name ;
-                 callbackContext.success(message);    
+            callbackContext.success("OK");
+                callbackContext.error("NOK");
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
 					desfireCardLogic();
               
-                  result=true; 
+               
 				} catch (Throwable t) {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
-              result=false; 
-                    return result;
+           callbackContext.success("NO");
+                callbackContext.error("NOTOK");
 				}
 
 			}
