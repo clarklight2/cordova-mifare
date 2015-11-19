@@ -284,10 +284,11 @@ public class MifarePlugin extends CordovaPlugin {
 	}
 
     
-    	public void onDESFireCardDetected(final IDESFireEV1 objDESFire) {
+    	public PluginResult onDESFireCardDetected(final IDESFireEV1 objDESFire final JSONObject options, final CallbackContext callbackContext) {
 				mDESFire = objDESFire;
 				/* Insert your logic here by commenting the function call below. */
 				try {
+                        e.printStackTrace();
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
 					desfireCardLogic();
@@ -450,7 +451,8 @@ public class MifarePlugin extends CordovaPlugin {
 		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,'n');
 
 		try {
-			  e.printStackTrace();
+            
+        
 			mDESFire.getReader().setTimeout(2000);
 			testDESFirepersonalize();
 			testDESFireauthenticate();
