@@ -152,11 +152,12 @@ public class MifarePlugin extends CordovaPlugin {
     // It seems that password errors returns as IOException instead of SmartCardException?!
     private boolean checkForPasswordSentAtIOError = false;
 
+       @Override
        public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
             
             
  
-            
+     return true;        
     }
     
     	private void showCardDetails(Object cardDetailsObj) {/*
