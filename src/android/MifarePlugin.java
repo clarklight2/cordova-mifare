@@ -294,7 +294,7 @@ public class MifarePlugin extends CordovaPlugin {
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
 					desfireCardLogic();
-                  
+                   
 				} catch (Throwable t) {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
@@ -454,7 +454,9 @@ public class MifarePlugin extends CordovaPlugin {
 		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,'n');
 
 		try {
-            
+                String name = "Works";
+                    String message = "Hello2" + name ;
+                 callbackContext.success(message);    
         
 			mDESFire.getReader().setTimeout(2000);
 			testDESFirepersonalize();
