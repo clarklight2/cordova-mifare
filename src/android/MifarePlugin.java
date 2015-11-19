@@ -294,12 +294,14 @@ public class MifarePlugin extends CordovaPlugin {
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
 					desfireCardLogic();
+                    return true;
                    
 				} catch (Throwable t) {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
+                     return false;
 				}
-return null;
+
 			}
     
     	private void testDESFireauthenticate() {
