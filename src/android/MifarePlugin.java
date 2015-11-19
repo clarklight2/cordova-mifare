@@ -108,7 +108,7 @@ public class MifarePlugin extends CordovaPlugin {
 	private IICodeSLIX2 iCodeSliX2;
 
 	/** Create imageView instance. */
-	private ImageView mImageView = null;
+
 	// private static Handler mHandler;
 	/** Create Textview instance initiated. */
 	private TextView tv = null;
@@ -189,101 +189,15 @@ private void initializeCipherinitVector() {
 	/**
 	 * Disclaimer Section contain Details About product.
 	 */
-	private void readDisclaimer() {
- 
-		AlertDialog.Builder alert = new AlertDialog.Builder(
-				MainLiteActivity.this);
-		alert.setTitle("About");
-		String[] cards = libInstance.getSupportedCards();
-		NxpLogUtils.i(TAG, "Supported Cards" + Arrays.toString(cards));
-		String message = getString(R.string.about_text);
-		alert.setMessage(message + "\n\n"
-				+ "Library Version Used in this application: "
-				+ NxpNfcLibLite.getLibraryVersion() + "\n\n"
-				+ "Suppoted Cards: " + Arrays.toString(cards) + "\n");
-		alert.setIcon(android.R.drawable.ic_dialog_info);
 
-		alert.setPositiveButton("Ok", new DialogInterface.OnClickListener() {
-			public void onClick(final DialogInterface dialog,
-					final int whichButton) {
-
-			}
-		});
-
-		alert.show();
-	}
 
 	/**
 	 * Read Me section contain Help and About product.
 	 */
 
-	private void readHelpAbout() { // TODO Auto-generated method stub
-		((TextView) findViewById(R.id.textPreferences))
-				.setOnClickListener(new View.OnClickListener() {
-
-					@Override
-					public void onClick(final View v) {
-						AlertDialog.Builder alert = new AlertDialog.Builder(
-								MainLiteActivity.this);
-						alert.setTitle("About");
-						String[] cards = libInstance.getSupportedCards();
-						NxpLogUtils.i(TAG,
-								"Supported Cards" + Arrays.toString(cards));
-						String message = getString(R.string.about_text);
-						alert.setMessage(message + "\n\n"
-								+ "Library Version Used in this application: "
-								+ NxpNfcLibLite.getLibraryVersion() + "\n\n"
-								+ "Suppoted Cards: " + Arrays.toString(cards)
-								+ "\n");
-						alert.setIcon(android.R.drawable.ic_dialog_info);
-
-						alert.setPositiveButton("Ok",
-								new DialogInterface.OnClickListener() {
-									public void onClick(
-											final DialogInterface dialog,
-											final int whichButton) {
-									}
-								});
-						alert.show();
-					}
-				});
-	}
-
 	/**
 	 * Initializing the UI thread.
 	 */
-	private void initializeUIhandler() {
-
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		mImageView.getLayoutParams().width = (size.x * 2) / 3;
-		mImageView.getLayoutParams().height = size.y / 3;
-
-		/*
-		 * mHandler = new Handler() {
-		 * 
-		 * @Override public void handleMessage(Message msg) { Log.i(TAG,
-		 * "inside handlemessge, msg.what is " + msg.what); String
-		 * messageResponse = msg.getData().getString("message"); char where =
-		 * msg.getData().getChar("where"); if (messageResponse != null) {
-		 * showMessage(messageResponse, where); } } };
-		 */
-
-		mImageView.setImageResource(R.drawable.mifare_p);
-	}
-
-	@Override
-	protected void onPause() {
-		libInstance.stopForeGroundDispatch();
-		super.onPause();
-	}
-
-	@Override
-	protected void onResume() {
-		libInstance.startForeGroundDispatch();
-		super.onResume();
-	}
 
 	private void showCardDetails(Object cardDetailsObj) {/*
 														 * // showMessage(dump(
@@ -411,9 +325,7 @@ private void initializeCipherinitVector() {
 	@Override
 	protected void onNewIntent(final Intent intent) {
  
-		Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		long[] duration = { 50, 100, 200, 300 };
-		vib.vibrate(duration, -1);
+	
 
 		// MifareUltralight.get(tag)
 		libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
@@ -1801,23 +1713,7 @@ private void initializeCipherinitVector() {
 	 * 
 	 */
 
-	private void showImageSnap(final int cardTypeId) {
 
-		Display display = getWindowManager().getDefaultDisplay();
-		Point size = new Point();
-		display.getSize(size);
-		mImageView.getLayoutParams().width = (size.x * 2) / 3;
-		mImageView.getLayoutParams().height = size.y / 3;
-		Handler mHandler = new Handler();
-
-		mHandler.postDelayed(new Runnable() {
-			public void run() {
-				mImageView.setImageResource(cardTypeId);
-			}
-		}, 200);
-
-		mImageView.setImageResource(R.drawable.mifare_p);
-	}
 
 	/**
 	 * This will display message in toast or logcat .
