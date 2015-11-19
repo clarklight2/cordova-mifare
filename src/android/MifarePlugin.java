@@ -155,9 +155,19 @@ public class MifarePlugin extends CordovaPlugin {
        @Override
        public boolean execute(String action, JSONArray args, CallbackContext callbackContext) throws JSONException {
             
+   if (action.equals("greet")) {
+
+            String name = "33";
+            String message = "Hello, " + name;
+            callbackContext.success(message);
+
+            return true;
+
+        } else {
             
- 
-     return true;        
+            return false;
+
+        }      
     }
     
     	private void showCardDetails(Object cardDetailsObj) {/*
