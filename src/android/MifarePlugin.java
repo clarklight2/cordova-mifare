@@ -292,7 +292,7 @@ public class MifarePlugin extends CordovaPlugin {
 					desfireCardLogic();
 				} catch (Throwable t) {
 					t.printStackTrace();
-					showMessage("Unknown Error Tap Again!", 't');
+					//showMessage("Unknown Error Tap Again!", 't');
 				}
 
 			}
@@ -309,9 +309,9 @@ public class MifarePlugin extends CordovaPlugin {
 			NxpLogUtils.d(TAG, "testDESFireauthenticate, start");
 			mDESFire.authenticate(masterKey, appId, appkey);
 			res = true;
-			showMessage("Authenticate: " + res, 'd');
+			//showMessage("Authenticate: " + res, 'd');
 		} catch (SmartCardException e) {
-			showMessage("Authenticate: " + res, 'd');
+			//showMessage("Authenticate: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFireauthenticate, result is " + res);
@@ -330,9 +330,9 @@ public class MifarePlugin extends CordovaPlugin {
 
 			mDESFire.personalize(mykey, new byte[] { 0x12, 0x12, 0x12 }, appKey);
 			res = true;
-			showMessage("personalize: " + res, 'd');
+			//showMessage("personalize: " + res, 'd');
 		} catch (SmartCardException e) {
-			showMessage("personalize: " + res, 'd');
+			//showMessage("personalize: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFirepersonalize, result is " + res);
@@ -351,9 +351,9 @@ public class MifarePlugin extends CordovaPlugin {
 			NxpLogUtils.d(TAG, "testDESFireupdatePICCMasterKey, start");
 			mDESFire.updatePICCMasterKey(oldKey, newKey);
 			res = true;
-			showMessage("DESFire Update PICC Master Key: " + res, 'd');
+			//showMessage("DESFire Update PICC Master Key: " + res, 'd');
 		} catch (SmartCardException e) {
-			showMessage("DESFire Update PICC Master Key: " + res, 'd');
+			//showMessage("DESFire Update PICC Master Key: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFireupdatePICCMasterKey, result is " + res);
@@ -377,9 +377,9 @@ public class MifarePlugin extends CordovaPlugin {
 			mDESFire.updateApplicationMasterKey(masterKey, appId, oldKey,
 					newKey);
 			res = true;
-			showMessage("Update Application MasterKey: " + res, 'd');
+			//showMessage("Update Application MasterKey: " + res, 'd');
 		} catch (SmartCardException e) {
-			showMessage("Update Application MasterKey: " + res, 'd');
+			//showMessage("Update Application MasterKey: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFireupdateApplicationMasterKey, result is "
@@ -398,9 +398,9 @@ public class MifarePlugin extends CordovaPlugin {
 			NxpLogUtils.d(TAG, "testDESFireWrite, start");
 			mDESFire.write(data);
 			res = true;
-			showMessage("Data Written: " + Utilities.dumpBytes(data), 'd');
+			//showMessage("Data Written: " + Utilities.dumpBytes(data), 'd');
 		} catch (SmartCardException e) {
-			showMessage("Data Written: " + res, 'd');
+			//showMessage("Data Written: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFireWrite, result is " + res);
@@ -415,11 +415,11 @@ public class MifarePlugin extends CordovaPlugin {
 			NxpLogUtils.d(TAG, "testDESFireRead, start");
 			byte[] data = mDESFire.read(5);
 			res = true;
-			showMessage(
+			//showMessage(
 					"Data Read from the card..." + Utilities.dumpBytes(data),
 					'd');
 		} catch (SmartCardException e) {
-			showMessage("Data Read from the card: " + res, 'd');
+			//showMessage("Data Read from the card: " + res, 'd');
 			e.printStackTrace();
 		}
 		NxpLogUtils.d(TAG, "testDESFireRead, result is " + res);
@@ -446,9 +446,9 @@ public class MifarePlugin extends CordovaPlugin {
     
     	protected void desfireCardLogic() throws SmartCardException {
 
-		showImageSnap(R.drawable.desfire_ev1);
-		tv.setText(" ");
-		showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,
+		//showImageSnap(R.drawable.desfire_ev1);
+		//tv.setText(" ");
+		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,
 				'n');
 
 		try {
