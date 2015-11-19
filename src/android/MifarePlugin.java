@@ -299,8 +299,8 @@ public class MifarePlugin extends CordovaPlugin {
          
 				/* Insert your logic here by commenting the function call below. */
 				try {
-            callbackContext.success("OK");
-                callbackContext.error("NOK");
+            //callbackContext.success("OK");
+                //callbackContext.error("NOK");
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
 					desfireCardLogic();
@@ -309,8 +309,8 @@ public class MifarePlugin extends CordovaPlugin {
 				} catch (Throwable t) {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
-           callbackContext.success("NO");
-                callbackContext.error("NOTOK");
+          // callbackContext.success("NO");
+                //callbackContext.error("NOTOK");
 				}
 
 			}
