@@ -292,7 +292,7 @@ public class MifarePlugin extends CordovaPlugin {
 					desfireCardLogic();
 				} catch (Throwable t) {
 					t.printStackTrace();
-					//showMessage("Unknown Error Tap Again!", 't');
+					showMessage("Unknown Error Tap Again!", 't');
 				}
 
 			}
@@ -415,9 +415,7 @@ public class MifarePlugin extends CordovaPlugin {
 			NxpLogUtils.d(TAG, "testDESFireRead, start");
 			byte[] data = mDESFire.read(5);
 			res = true;
-			//showMessage(
-					"Data Read from the card..." + Utilities.dumpBytes(data),
-					'd');
+            //showMessage("Data Read from the card..." + Utilities.dumpBytes(data),'d');
 		} catch (SmartCardException e) {
 			//showMessage("Data Read from the card: " + res, 'd');
 			e.printStackTrace();
@@ -448,8 +446,7 @@ public class MifarePlugin extends CordovaPlugin {
 
 		//showImageSnap(R.drawable.desfire_ev1);
 		//tv.setText(" ");
-		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,
-				'n');
+		showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,'n');
 
 		try {
 			mDESFire.getReader().setTimeout(2000);
