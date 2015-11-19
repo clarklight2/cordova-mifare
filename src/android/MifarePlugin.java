@@ -299,7 +299,7 @@ public class MifarePlugin extends CordovaPlugin {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
 				}
-return null;
+return message;
 			}
     
     	private void testDESFireauthenticate() {
