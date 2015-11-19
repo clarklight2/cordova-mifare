@@ -293,7 +293,7 @@ public class MifarePlugin extends CordovaPlugin {
                  callbackContext.success(message);    
 					mDESFire.getReader().close();
 					mDESFire.getReader().connect();
-					desfireCardLogic(final JSONObject options, final CallbackContext callbackContext);
+					desfireCardLogic();
                    
 				} catch (Throwable t) {
 					t.printStackTrace();
@@ -447,16 +447,14 @@ public class MifarePlugin extends CordovaPlugin {
 		NxpLogUtils.d(TAG, "testDESFireFormat, End");
 	}
     
-    	protected void desfireCardLogic(final JSONObject options, final CallbackContext callbackContext) throws SmartCardException {
+    	protected void desfireCardLogic() throws SmartCardException {
 
 		//showImageSnap(R.drawable.desfire_ev1);
 		//tv.setText(" ");
 		//showMessage("Card Detected : " + mDESFire.getCardDetails().cardName,'n');
 
 		try {
-                String name = "Works";
-                    String message = "Hello2" + name ;
-                 callbackContext.success(message);    
+                  
         
 			mDESFire.getReader().setTimeout(2000);
 			testDESFirepersonalize();
