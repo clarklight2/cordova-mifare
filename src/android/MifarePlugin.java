@@ -298,6 +298,7 @@ public class MifarePlugin extends CordovaPlugin {
 				mDESFire = objDESFire;
 				/* Insert your logic here by commenting the function call below. */
 				try {
+                    boolean result=true;
                     String name = "Name";
                     String message = "Hello" + name ;
                  callbackContext.success(message);    
@@ -305,13 +306,13 @@ public class MifarePlugin extends CordovaPlugin {
 					mDESFire.getReader().connect();
 					desfireCardLogic();
               
-                   
+                  result=true; 
 				} catch (Throwable t) {
 					t.printStackTrace();
 					//showMessage("Unknown Error Tap Again!", 't');
-              
+              result=false; 
 				}
-
+return result;
 			}
     
     	private void testDESFireauthenticate() {
