@@ -166,7 +166,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
-   onDESFireCardDetected(mDESFire,args.getJSONObject(0), callbackContext);
+   onNewIntent(args.getJSONObject(0), callbackContext);
     return true;
    } else {
             
