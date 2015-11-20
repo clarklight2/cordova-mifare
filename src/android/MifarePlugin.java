@@ -299,7 +299,7 @@ public class MifarePlugin extends CordovaPlugin {
 	}
 
     
-    	public void onDESFireCardDetected (final IDESFireEV1 objDESFire) {
+    	public void onDESFireCardDetected ( IDESFireEV1 objDESFire,String action, JSONArray args, CallbackContext callbackContext) {
 				mDESFire = objDESFire;
             String name = "33233";
             String message = "Hellogesgse, " + name;
