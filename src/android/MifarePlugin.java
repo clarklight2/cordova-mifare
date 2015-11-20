@@ -15,7 +15,10 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
-
+import android.nfc.TagLostException;
+import android.os.Bundle;
+import android.os.Handler;
+import android.os.Vibrator;
 import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthenticationException;
 import android.content.Intent;
@@ -166,7 +169,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
-   onNewIntent(args.getJSONObject(0), callbackContext);
+   onNewIntent();
     return true;
    } else {
             
@@ -298,10 +301,9 @@ public class MifarePlugin extends CordovaPlugin {
 														 */
 	}
 protected void onNewIntent(final Intent intent,final JSONObject options, final CallbackContext callbackContext) {
-          String name = "33233";
-            String message = "Hellogesgse, " + name;
-            callbackContext.success(message);
-    
+	Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		long[] duration = { 50, 100, 200, 300 };
+		vib.vibrate(duration, -1);
     
     	libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
     
