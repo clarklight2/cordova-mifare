@@ -163,7 +163,12 @@ public class MifarePlugin extends CordovaPlugin {
 
             return true;
 
-        } else {
+        }  else if(action.equals("detected")){
+   
+   
+   onDESFireCardDetected();
+   
+   } else {
             
             return false;
 
