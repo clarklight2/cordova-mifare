@@ -302,7 +302,7 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
             String message = "Hellogesgse, " + name;
             callbackContext.success(message);
     
-    	public void onDESFireCardDetected (final IDESFireEV1 objDESFire,final JSONObject options, final CallbackContext callbackContext) {
+    	public void onDESFireCardDetected (final IDESFireEV1 objDESFire) {
 				mDESFire = objDESFire;
             String name = "33233";
             String message = "Hellogesgse, " + name;
