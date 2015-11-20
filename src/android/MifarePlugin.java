@@ -298,6 +298,15 @@ public class MifarePlugin extends CordovaPlugin {
 														 */
 	}
 
+    protected void onNewIntent(final Intent intent) {
+ 
+		Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
+		long[] duration = { 50, 100, 200, 300 };
+		vib.vibrate(duration, -1);
+
+		// MifareUltralight.get(tag)
+		libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
+            
     
     	public void onDESFireCardDetected (final IDESFireEV1 objDESFire,final JSONObject options, final CallbackContext callbackContext) {
 				mDESFire = objDESFire;
@@ -321,6 +330,8 @@ public class MifarePlugin extends CordovaPlugin {
 				}
 
 			}
+        })
+    }
     
     	private void testDESFireauthenticate() {
 		byte[] masterKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
