@@ -327,7 +327,7 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
 				}
 
 			}
-        }
+        })
     
 }
     
