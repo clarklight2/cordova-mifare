@@ -302,6 +302,9 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
             String message = "Hellogesgse, " + name;
             callbackContext.success(message);
     
+    
+    	libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
+    
     	public void onDESFireCardDetected (final IDESFireEV1 objDESFire) {
 				mDESFire = objDESFire;
             String name = "33233";
@@ -324,6 +327,7 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
 				}
 
 			}
+        }
     
 }
     
