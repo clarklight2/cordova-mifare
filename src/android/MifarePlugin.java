@@ -15,10 +15,28 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.apache.http.ProtocolException;
+import org.apache.http.auth.AuthenticationException;
+
+import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.graphics.Point;
 import android.nfc.TagLostException;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Vibrator;
+import android.text.method.ScrollingMovementMethod;
+import android.view.Display;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
+import android.widget.Toast;
+
+
+
 import org.apache.http.ProtocolException;
 import org.apache.http.auth.AuthenticationException;
 import android.content.Intent;
@@ -169,7 +187,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
- 
+
     return true;
    } else {
             
