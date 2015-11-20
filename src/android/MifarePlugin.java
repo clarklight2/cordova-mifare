@@ -319,10 +319,7 @@ public class MifarePlugin extends CordovaPlugin {
 														 */
 	}
 protected void onNewIntent(final Intent intent,final JSONObject options, final CallbackContext callbackContext) {
-	Vibrator vib = (Vibrator) getSystemService(VIBRATOR_SERVICE);
-		long[] duration = { 50, 100, 200, 300 };
-		vib.vibrate(duration, -1);
-    
+
     	libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
     
     	public void onDESFireCardDetected (final IDESFireEV1 objDESFire) {
