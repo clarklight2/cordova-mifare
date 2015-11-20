@@ -44,6 +44,12 @@ mifareExport.greet =  function (name, successCallback, errorCallback) {
     
 };
 
+mifareExport.detected =  function (name, successCallback, errorCallback) {
+        cordova.exec(successCallback, errorCallback, "MifarePlugin", "detected", [name]);
+        console.log("test2432");
+    
+};
+
 module.exports = mifareExport;
 
 
