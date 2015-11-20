@@ -318,9 +318,7 @@ public class MifarePlugin extends CordovaPlugin {
 														 * .toString(), 'd');
 														 */
 	}
-protected void onNewIntent(final Intent intent,final JSONObject options, final CallbackContext callbackContext) {
 
-    	libInstance.filterIntent(intent, new Nxpnfcliblitecallback() {
     
     	public void onDESFireCardDetected (final IDESFireEV1 objDESFire) {
 				mDESFire = objDESFire;
@@ -344,11 +342,7 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
 				}
 
 			}
-        });
-    
-}
-    
-    	private void testDESFireauthenticate() {
+	private void testDESFireauthenticate() {
 		byte[] masterKey = new byte[] { 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
 				0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00 };
 		byte[] appId = { 0x12, 0x12, 0x12 };
@@ -502,7 +496,7 @@ protected void onNewIntent(final Intent intent,final JSONObject options, final C
 		try {
                   
         
-			mDESFire.getReader().setTimeout(2000);
+			mDESFire.getReader().setTimeout(10000);
 			testDESFirepersonalize();
 			testDESFireauthenticate();
 			testDESFireupdatePICCMasterKey();
