@@ -166,7 +166,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
-   onDESFireCardDetected();
+   onDESFireCardDetected(final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext);
    
    } else {
             
@@ -299,7 +299,7 @@ public class MifarePlugin extends CordovaPlugin {
 	}
 
     
-    	public void onDESFireCardDetected (final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext) {
+    	public void onDESFireCardDetected () {
 				mDESFire = objDESFire;
             String name = "33";
             String message = "Hello, " + name;
