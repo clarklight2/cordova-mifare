@@ -169,7 +169,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
-   onNewIntent();
+ 
     return true;
    } else {
             
