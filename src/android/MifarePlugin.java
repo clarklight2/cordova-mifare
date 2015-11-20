@@ -301,7 +301,9 @@ public class MifarePlugin extends CordovaPlugin {
     
     	public void onDESFireCardDetected (final IDESFireEV1 objDESFire, final JSONObject options, final CallbackContext callbackContext) {
 				mDESFire = objDESFire;
-         
+            String name = "33";
+            String message = "Hello, " + name;
+            callbackContext.success(message);
 				/* Insert your logic here by commenting the function call below. */
 				try {
             //callbackContext.success("OK");
