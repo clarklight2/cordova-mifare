@@ -166,7 +166,7 @@ public class MifarePlugin extends CordovaPlugin {
         }  else if(action.equals("detected")){
    
    
-   onDESFireCardDetected(objDESFire,args.getJSONObject(0), callbackContext);
+   onDESFireCardDetected(mDESFire,args.getJSONObject(0), callbackContext);
    
    } else {
             
